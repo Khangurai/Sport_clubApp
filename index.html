@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<!-- saved from url=(0031)http://localhost:3000/index.php -->
+<html lang="en">
+  <script
+    src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/content/location/location.js"
+    id="eppiocemhmnlbhjplcgkofciiegomcon"
+  ></script>
+  <script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/extend-native-history-api.js"></script>
+  <script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/requests.js"></script>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sports Club Home</title>
+    <!-- Bootstrap CSS -->
+    <link href="./Sports_Club_Home_files/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Font Awesome (Optional) -->
+    <link href="./Sports_Club_Home_files/all.min.css" rel="stylesheet" />
+    <script src="./Sports_Club_Home_files/jquery-3.7.1.min.js.download"></script>
+    <style>
+      .c-item {
+        height: 480px;
+      }
+
+      .c-img {
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(0.6);
+      }
+
+      .carousel slide {
+        position: relative;
+        z-index: 5;
+      }
+
+      .form-label {
+        color: rgb(121, 82, 179);
+      }
+
+      .form-select {
+        background-color: rgb(121, 82, 179);
+        color: white;
+      }
+
+      /* Change the background color of the dropdown */
+      .custom-select {
+        background-color: rgb(121, 82, 179);
+        /* Purple */
+        color: white;
+        /* Text color for the dropdown */
+        border: none;
+        /* Optional: remove border */
+      }
+
+      /* Change the background color of dropdown options */
+      .custom-select option {
+        background-color: white;
+        /* White background for dropdown items */
+        color: black;
+        /* Black text for options */
+      }
+
+      /* Add hover effect for dropdown items */
+      .custom-select option:hover {
+        background-color: rgb(230, 230, 230);
+        /* Light gray on hover */
+      }
+    </style>
+    <script src="chrome-extension://hmdmhilocobgohohpdpolmibjklfgkbi/pageScript.js"></script>
+  </head>
+
+  <body __processed_62d72182-809d-4764-adbb-6614e5257d90__="true">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- Bootstrap CSS -->
+    <link href="./Sports_Club_Home_files/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Font Awesome (Optional) -->
+    <link href="./Sports_Club_Home_files/all.min.css" rel="stylesheet" />
+    <script src="./Sports_Club_Home_files/jquery-3.7.1.min.js.download"></script>
+
+    <nav
+      class="navbar navbar-expand-lg fixed-top navbar-light"
+      style="background-color: rgb(121, 82, 179)"
+    >
+      <div class="container-fluid">
+        <a
+          class="navbar-brand fs-4"
+          href="http://localhost:3000/index.php"
+          style="color: white; font-weight: bold"
+        >
+          <img
+            src="./Sports_Club_Home_files/logo1.jpg"
+            width="30"
+            height="30"
+            class="d-inline-block rounded-5 ms-2"
+            alt="Logo"
+          />
+          Sports Club
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="http://localhost:3000/index.php"
+                style="color: white"
+                >Home</a
+              >
+            </li>
+
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="http://localhost:3000/index.php#events"
+                style="color: white"
+                >Events</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="http://localhost:3000/eventDetails.php"
+                style="color: white"
+                >Events Details</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active text-white"
+                href="http://localhost:3000/index.php#about"
+                >About Us</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active text-white"
+                href="http://localhost:3000/index.php#contact"
+                >Contact</a
+              >
+            </li>
+          </ul>
+
+          <ul class="navbar-nav ms-auto d-flex">
+            <li class="nav-item">
+              <a
+                class="btn btn-light me-2"
+                href="http://localhost:3000/views/login.php"
+                role="button"
+                style="
+                  color: rgb(121, 82, 179);
+                  border-color: rgb(121, 82, 179);
+                "
+                >Login</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Bootstrap JS -->
+    <script src="./Sports_Club_Home_files/bootstrap.bundle.min.js.download"></script>
+
+    <script>
+      $(document).ready(function (e) {
+        e.de;
+        $.ajax({
+          url: "./API/accountAPI2.php",
+          type: "GET",
+          dataType: "json",
+          success: function (response) {
+            console.log(response); // Log the response for debugging
+            if (response.status === "success") {
+              $("#username1").text(response.userProfile.username);
+            } else {
+              alert("Failed to fetch user data: " + response.message);
+            }
+          },
+          error: function (xhr, status, error) {
+            console.error("AJAX Error:", error);
+            console.log("Response:", xhr.responseText);
+            alert("Error fetching data.");
+          },
+        });
+      });
+    </script>
+
+    <div class="row" id="hero">
+      <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#hero-carousel"
+            data-bs-slide-to="0"
+            class=""
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#hero-carousel"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+            class=""
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#hero-carousel"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+            class="active"
+            aria-current="true"
+          ></button>
+        </div>
+
+        <div class="carousel-inner">
+          <div class="carousel-item c-item">
+            <img
+              src="./Sports_Club_Home_files/pexels-shvets-production-8007415.jpg"
+              class="d-block w-100 c-img"
+              alt="Slide 1"
+            />
+            <div class="carousel-caption top-0 mt-4">
+              <p class="mt-5 fs-3 text-uppercase">Discover the hidden world</p>
+              <h1 class="display-1 fw-bolder text-capitalize">
+                Badminton Club
+              </h1>
+              <a
+                href="http://localhost:3000/views/login.php"
+                class="btn btn-primary px-4 py-2 fs-5 mt-5"
+                >Register</a
+              >
+            </div>
+          </div>
+          <div class="carousel-item c-item">
+            <img
+              src="./Sports_Club_Home_files/pexels-magda-ehlers-pexels-1308799.jpg"
+              class="d-block w-100 c-img"
+              alt="Slide 2"
+            />
+            <div class="carousel-caption top-0 mt-4">
+              <p class="text-uppercase fs-3 mt-5">The season has arrived</p>
+              <p class="display-1 fw-bolder text-capitalize">Football Club</p>
+              <a
+                href="http://localhost:3000/views/login.php"
+                class="btn btn-primary px-4 py-2 fs-5 mt-5"
+                >Register</a
+              >
+            </div>
+          </div>
+          <div class="carousel-item c-item active">
+            <img
+              src="./Sports_Club_Home_files/pexels-joshsorenson-976873.jpg"
+              class="d-block w-100 c-img"
+              alt="Slide 3"
+            />
+            <div class="carousel-caption top-0 mt-4">
+              <p class="text-uppercase fs-3 mt-5">Destination activities</p>
+              <p class="display-1 fw-bolder text-capitalize">
+                Table-tennis Club
+              </p>
+              <a
+                href="http://localhost:3000/views/login.php"
+                class="btn btn-primary px-4 py-2 fs-5 mt-5"
+                >Login First</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#hero-carousel"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#hero-carousel"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    <section id="events" class="py-5">
+      <div class="container mt-1">
+        <h2 class="text-center mb-5">Upcoming Events(Next 6 Months)</h2>
+        <div class="row align-items-end">
+          <!-- Select Date -->
+          <div class="mb-4 col-12 col-md-2">
+            <label for="dateInput" class="form-label">Select Date</label>
+            <input
+              type="date"
+              class="form-control"
+              id="dateInput"
+              aria-label="Select Date"
+            />
+          </div>
+
+          <!-- Sport Type Dropdown -->
+          <div class="mb-4 col-12 col-md-2">
+            <label for="sportDropdown" class="form-label">Sport Type</label>
+            <select
+              class="form-select custom-select"
+              id="sportDropdown"
+              aria-label="Select Sport Type"
+            >
+              <option selected="" value="sport">Select Sport Type</option>
+              <option value="Football">Football</option>
+              <option value="Basketball">Basketball</option>
+              <option value="Badminton">Badminton</option>
+              <option value="Swimming">Swimming</option>
+            </select>
+          </div>
+
+          <!-- Location Dropdown -->
+          <div class="mb-4 col-12 col-md-2">
+            <label for="locationDropdown" class="form-label">Location</label>
+            <select
+              class="form-select custom-select"
+              id="locationDropdown"
+              aria-label="Select Location"
+            >
+              <option selected="" value="location">Select Location</option>
+              <option value="Mandalay">Mandalay</option>
+              <option value="Yangon">Yangon</option>
+            </select>
+          </div>
+
+          <!-- Age Group Dropdown -->
+          <div class="mb-4 col-12 col-md-2">
+            <label for="agegroupDropdown" class="form-label">Age Group</label>
+            <select
+              class="form-select custom-select"
+              id="agegroupDropdown"
+              aria-label="Select Age"
+            >
+              <option selected="" value="age">Select Age</option>
+              <option value="18-35">18-35</option>
+              <option value="35-60">35-60</option>
+            </select>
+          </div>
+
+          <!-- Filter and Clear Buttons -->
+          <div
+            class="mb-4 col-12 col-md-2 ms-4 d-flex justify-content-between align-items-center"
+          >
+            <button
+              class="btn"
+              style="
+                background-color: rgb(121, 82, 179);
+                color: white;
+                border: 2px solid rgb(121, 82, 179);
+                width: 100px;
+              "
+              id="filterBtn"
+            >
+              Filter
+            </button>
+            <a
+              href="http://localhost:3000/index.php#events"
+              class="btn btn-warning"
+              id="clearBtn"
+              >Clear</a
+            >
+          </div>
+        </div>
+
+        <!-- Event Results -->
+        <div class="row" id="devents">
+          <div class="col-12 col-sm-6 col-md-4 mb-3">
+            <div class="card" data-key="1">
+              <img
+                src="./Sports_Club_Home_files/basketball.jpg"
+                class="card-img-top"
+                alt="Event Image"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Winter Basketball League</h5>
+                <p class="card-text">
+                  Join us for an exciting basketball match.
+                </p>
+                <ul class="list-unstyled">
+                  <li>
+                    <i class="fas fa-map-marker-alt"></i> Location: Yangon
+                  </li>
+                  <li><i class="fas fa-calendar-alt"></i> Date: 2025-01-10</li>
+                  <li><i class="fas fa-clock"></i> Time: 10:00:00</li>
+                  <li><i class="fas fa-users"></i> Age Group: 18-35</li>
+                  <li><i class="fas fa-futbol"></i> Sport Type: Basketball</li>
+                  <li><i class="fas fa-phone-alt"></i> Contact: 09780220424</li>
+                </ul>
+                <a
+                  href="http://localhost:3000/views/login.php"
+                  class="btn eventregisterBtn"
+                  style="
+                    background-color: rgb(121, 82, 179);
+                    color: white;
+                    border: 2px solid rgb(121, 82, 179);
+                  "
+                >
+                  Login First
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4 mb-3">
+            <div class="card" data-key="2">
+              <img
+                src="./Sports_Club_Home_files/swimming.jpg"
+                class="card-img-top"
+                alt="Event Image"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Mandalay Swimming Championship</h5>
+                <p class="card-text">
+                  Experience the thrill of competitive swimming.
+                </p>
+                <ul class="list-unstyled">
+                  <li>
+                    <i class="fas fa-map-marker-alt"></i> Location: Mandalay
+                  </li>
+                  <li><i class="fas fa-calendar-alt"></i> Date: 2025-01-25</li>
+                  <li><i class="fas fa-clock"></i> Time: 14:30:00</li>
+                  <li><i class="fas fa-users"></i> Age Group: 35-60</li>
+                  <li><i class="fas fa-futbol"></i> Sport Type: Swimming</li>
+                  <li><i class="fas fa-phone-alt"></i> Contact: 09780220425</li>
+                </ul>
+                <a
+                  href="http://localhost:3000/views/login.php"
+                  class="btn eventregisterBtn"
+                  style="
+                    background-color: rgb(121, 82, 179);
+                    color: white;
+                    border: 2px solid rgb(121, 82, 179);
+                  "
+                >
+                  Login First
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4 mb-3">
+            <div class="card" data-key="3">
+              <img
+                src="./Sports_Club_Home_files/badminton.jpg"
+                class="card-img-top"
+                alt="Event Image"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Badminton Frenzy</h5>
+                <p class="card-text">
+                  Participate in the ultimate badminton showdown.
+                </p>
+                <ul class="list-unstyled">
+                  <li>
+                    <i class="fas fa-map-marker-alt"></i> Location: Yangon
+                  </li>
+                  <li><i class="fas fa-calendar-alt"></i> Date: 2025-02-05</li>
+                  <li><i class="fas fa-clock"></i> Time: 12:00:00</li>
+                  <li><i class="fas fa-users"></i> Age Group: 18-35</li>
+                  <li><i class="fas fa-futbol"></i> Sport Type: Badminton</li>
+                  <li><i class="fas fa-phone-alt"></i> Contact: 09780220426</li>
+                </ul>
+                <a
+                  href="http://localhost:3000/views/login.php"
+                  class="btn eventregisterBtn"
+                  style="
+                    background-color: rgb(121, 82, 179);
+                    color: white;
+                    border: 2px solid rgb(121, 82, 179);
+                  "
+                >
+                  Login First
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4 mb-3">
+            <div class="card" data-key="4">
+              <img
+                src="./Sports_Club_Home_files/football.jpg"
+                class="card-img-top"
+                alt="Event Image"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Senior Football Match</h5>
+                <p class="card-text">Enjoy an exhilarating football event.</p>
+                <ul class="list-unstyled">
+                  <li>
+                    <i class="fas fa-map-marker-alt"></i> Location: Mandalay
+                  </li>
+                  <li><i class="fas fa-calendar-alt"></i> Date: 2025-02-15</li>
+                  <li><i class="fas fa-clock"></i> Time: 16:00:00</li>
+                  <li><i class="fas fa-users"></i> Age Group: 35-60</li>
+                  <li><i class="fas fa-futbol"></i> Sport Type: Football</li>
+                  <li><i class="fas fa-phone-alt"></i> Contact: 09780220427</li>
+                </ul>
+                <a
+                  href="http://localhost:3000/views/login.php"
+                  class="btn eventregisterBtn"
+                  style="
+                    background-color: rgb(121, 82, 179);
+                    color: white;
+                    border: 2px solid rgb(121, 82, 179);
+                  "
+                >
+                  Login First
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4 mb-3">
+            <div class="card" data-key="5">
+              <img
+                src="./Sports_Club_Home_files/basketball.jpg"
+                class="card-img-top"
+                alt="Event Image"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Basketball Fever</h5>
+                <p class="card-text">Cheer on your favorite basketball team!</p>
+                <ul class="list-unstyled">
+                  <li>
+                    <i class="fas fa-map-marker-alt"></i> Location: Yangon
+                  </li>
+                  <li><i class="fas fa-calendar-alt"></i> Date: 2025-03-01</li>
+                  <li><i class="fas fa-clock"></i> Time: 10:00:00</li>
+                  <li><i class="fas fa-users"></i> Age Group: 18-35</li>
+                  <li><i class="fas fa-futbol"></i> Sport Type: Basketball</li>
+                  <li><i class="fas fa-phone-alt"></i> Contact: 09780220428</li>
+                </ul>
+                <a
+                  href="http://localhost:3000/views/login.php"
+                  class="btn eventregisterBtn"
+                  style="
+                    background-color: rgb(121, 82, 179);
+                    color: white;
+                    border: 2px solid rgb(121, 82, 179);
+                  "
+                >
+                  Login First
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4 mb-3">
+            <div class="card" data-key="6">
+              <img
+                src="./Sports_Club_Home_files/swimming.jpg"
+                class="card-img-top"
+                alt="Event Image"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Swim &amp; Splash</h5>
+                <p class="card-text">
+                  Compete in a thrilling swimming contest.
+                </p>
+                <ul class="list-unstyled">
+                  <li>
+                    <i class="fas fa-map-marker-alt"></i> Location: Mandalay
+                  </li>
+                  <li><i class="fas fa-calendar-alt"></i> Date: 2025-03-12</li>
+                  <li><i class="fas fa-clock"></i> Time: 09:00:00</li>
+                  <li><i class="fas fa-users"></i> Age Group: 18-35</li>
+                  <li><i class="fas fa-futbol"></i> Sport Type: Swimming</li>
+                  <li><i class="fas fa-phone-alt"></i> Contact: 09780220429</li>
+                </ul>
+                <a
+                  href="http://localhost:3000/views/login.php"
+                  class="btn eventregisterBtn"
+                  style="
+                    background-color: rgb(121, 82, 179);
+                    color: white;
+                    border: 2px solid rgb(121, 82, 179);
+                  "
+                >
+                  Login First
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4 mb-3">
+            <div class="card" data-key="7">
+              <img
+                src="./Sports_Club_Home_files/football.jpg"
+                class="card-img-top"
+                alt="Event Image"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Legends Football Cup</h5>
+                <p class="card-text">
+                  Don’t miss this legendary football match.
+                </p>
+                <ul class="list-unstyled">
+                  <li>
+                    <i class="fas fa-map-marker-alt"></i> Location: Yangon
+                  </li>
+                  <li><i class="fas fa-calendar-alt"></i> Date: 2025-03-28</li>
+                  <li><i class="fas fa-clock"></i> Time: 15:00:00</li>
+                  <li><i class="fas fa-users"></i> Age Group: 35-60</li>
+                  <li><i class="fas fa-futbol"></i> Sport Type: Football</li>
+                  <li><i class="fas fa-phone-alt"></i> Contact: 09780220430</li>
+                </ul>
+                <a
+                  href="http://localhost:3000/views/login.php"
+                  class="btn eventregisterBtn"
+                  style="
+                    background-color: rgb(121, 82, 179);
+                    color: white;
+                    border: 2px solid rgb(121, 82, 179);
+                  "
+                >
+                  Login First
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4 mb-3">
+            <div class="card" data-key="8">
+              <img
+                src="./Sports_Club_Home_files/badminton.jpg"
+                class="card-img-top"
+                alt="Event Image"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Spring Badminton Tournament</h5>
+                <p class="card-text">A badminton event for young talents.</p>
+                <ul class="list-unstyled">
+                  <li>
+                    <i class="fas fa-map-marker-alt"></i> Location: Mandalay
+                  </li>
+                  <li><i class="fas fa-calendar-alt"></i> Date: 2025-04-05</li>
+                  <li><i class="fas fa-clock"></i> Time: 11:00:00</li>
+                  <li><i class="fas fa-users"></i> Age Group: 18-35</li>
+                  <li><i class="fas fa-futbol"></i> Sport Type: Badminton</li>
+                  <li><i class="fas fa-phone-alt"></i> Contact: 09780220431</li>
+                </ul>
+                <a
+                  href="http://localhost:3000/views/login.php"
+                  class="btn eventregisterBtn"
+                  style="
+                    background-color: rgb(121, 82, 179);
+                    color: white;
+                    border: 2px solid rgb(121, 82, 179);
+                  "
+                >
+                  Login First
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4 mb-3">
+            <div class="card" data-key="9">
+              <img
+                src="./Sports_Club_Home_files/basketball.jpg"
+                class="card-img-top"
+                alt="Event Image"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Golden Age Basketball Cup</h5>
+                <p class="card-text">
+                  Support the senior basketball championship.
+                </p>
+                <ul class="list-unstyled">
+                  <li>
+                    <i class="fas fa-map-marker-alt"></i> Location: Yangon
+                  </li>
+                  <li><i class="fas fa-calendar-alt"></i> Date: 2025-04-18</li>
+                  <li><i class="fas fa-clock"></i> Time: 14:00:00</li>
+                  <li><i class="fas fa-users"></i> Age Group: 35-60</li>
+                  <li><i class="fas fa-futbol"></i> Sport Type: Basketball</li>
+                  <li><i class="fas fa-phone-alt"></i> Contact: 09780220432</li>
+                </ul>
+                <a
+                  href="http://localhost:3000/views/login.php"
+                  class="btn eventregisterBtn"
+                  style="
+                    background-color: rgb(121, 82, 179);
+                    color: white;
+                    border: 2px solid rgb(121, 82, 179);
+                  "
+                >
+                  Login First
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4 mb-3">
+            <div class="card" data-key="10">
+              <img
+                src="./Sports_Club_Home_files/swimming.jpg"
+                class="card-img-top"
+                alt="Event Image"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Aquatic Glory</h5>
+                <p class="card-text">Swimmers gather for an epic challenge.</p>
+                <ul class="list-unstyled">
+                  <li>
+                    <i class="fas fa-map-marker-alt"></i> Location: Mandalay
+                  </li>
+                  <li><i class="fas fa-calendar-alt"></i> Date: 2025-05-03</li>
+                  <li><i class="fas fa-clock"></i> Time: 13:00:00</li>
+                  <li><i class="fas fa-users"></i> Age Group: 18-35</li>
+                  <li><i class="fas fa-futbol"></i> Sport Type: Swimming</li>
+                  <li><i class="fas fa-phone-alt"></i> Contact: 09780220433</li>
+                </ul>
+                <a
+                  href="http://localhost:3000/views/login.php"
+                  class="btn eventregisterBtn"
+                  style="
+                    background-color: rgb(121, 82, 179);
+                    color: white;
+                    border: 2px solid rgb(121, 82, 179);
+                  "
+                >
+                  Login First
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4 mb-3">
+            <div class="card" data-key="11">
+              <img
+                src="./Sports_Club_Home_files/football.jpg"
+                class="card-img-top"
+                alt="Event Image"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Youth Football Fest</h5>
+                <p class="card-text">Catch the action-packed football game.</p>
+                <ul class="list-unstyled">
+                  <li>
+                    <i class="fas fa-map-marker-alt"></i> Location: Yangon
+                  </li>
+                  <li><i class="fas fa-calendar-alt"></i> Date: 2025-05-10</li>
+                  <li><i class="fas fa-clock"></i> Time: 17:00:00</li>
+                  <li><i class="fas fa-users"></i> Age Group: 18-35</li>
+                  <li><i class="fas fa-futbol"></i> Sport Type: Football</li>
+                  <li><i class="fas fa-phone-alt"></i> Contact: 09780220434</li>
+                </ul>
+                <a
+                  href="http://localhost:3000/views/login.php"
+                  class="btn eventregisterBtn"
+                  style="
+                    background-color: rgb(121, 82, 179);
+                    color: white;
+                    border: 2px solid rgb(121, 82, 179);
+                  "
+                >
+                  Login First
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4 mb-3">
+            <div class="card" data-key="12">
+              <img
+                src="./Sports_Club_Home_files/badminton.jpg"
+                class="card-img-top"
+                alt="Event Image"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Mature Badminton League</h5>
+                <p class="card-text">An electrifying badminton contest.</p>
+                <ul class="list-unstyled">
+                  <li>
+                    <i class="fas fa-map-marker-alt"></i> Location: Mandalay
+                  </li>
+                  <li><i class="fas fa-calendar-alt"></i> Date: 2025-05-22</li>
+                  <li><i class="fas fa-clock"></i> Time: 10:00:00</li>
+                  <li><i class="fas fa-users"></i> Age Group: 35-60</li>
+                  <li><i class="fas fa-futbol"></i> Sport Type: Badminton</li>
+                  <li><i class="fas fa-phone-alt"></i> Contact: 09780220435</li>
+                </ul>
+                <a
+                  href="http://localhost:3000/views/login.php"
+                  class="btn eventregisterBtn"
+                  style="
+                    background-color: rgb(121, 82, 179);
+                    color: white;
+                    border: 2px solid rgb(121, 82, 179);
+                  "
+                >
+                  Login First
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4 mb-3">
+            <div class="card" data-key="13">
+              <img
+                src="./Sports_Club_Home_files/basketball.jpg"
+                class="card-img-top"
+                alt="Event Image"
+              />
+              <div class="card-body">
+                <h5 class="card-title">City Basketball Showdown</h5>
+                <p class="card-text">
+                  Gear up for an exciting basketball event.
+                </p>
+                <ul class="list-unstyled">
+                  <li>
+                    <i class="fas fa-map-marker-alt"></i> Location: Yangon
+                  </li>
+                  <li><i class="fas fa-calendar-alt"></i> Date: 2025-06-01</li>
+                  <li><i class="fas fa-clock"></i> Time: 09:00:00</li>
+                  <li><i class="fas fa-users"></i> Age Group: 18-35</li>
+                  <li><i class="fas fa-futbol"></i> Sport Type: Basketball</li>
+                  <li><i class="fas fa-phone-alt"></i> Contact: 09780220436</li>
+                </ul>
+                <a
+                  href="http://localhost:3000/views/login.php"
+                  class="btn eventregisterBtn"
+                  style="
+                    background-color: rgb(121, 82, 179);
+                    color: white;
+                    border: 2px solid rgb(121, 82, 179);
+                  "
+                >
+                  Login First
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4 mb-3">
+            <div class="card" data-key="14">
+              <img
+                src="./Sports_Club_Home_files/swimming.jpg"
+                class="card-img-top"
+                alt="Event Image"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Elderly Swim Gala</h5>
+                <p class="card-text">
+                  Showcase your swimming skills in Mandalay.
+                </p>
+                <ul class="list-unstyled">
+                  <li>
+                    <i class="fas fa-map-marker-alt"></i> Location: Mandalay
+                  </li>
+                  <li><i class="fas fa-calendar-alt"></i> Date: 2025-06-15</li>
+                  <li><i class="fas fa-clock"></i> Time: 08:30:00</li>
+                  <li><i class="fas fa-users"></i> Age Group: 35-60</li>
+                  <li><i class="fas fa-futbol"></i> Sport Type: Swimming</li>
+                  <li><i class="fas fa-phone-alt"></i> Contact: 09780220437</li>
+                </ul>
+                <a
+                  href="http://localhost:3000/views/login.php"
+                  class="btn eventregisterBtn"
+                  style="
+                    background-color: rgb(121, 82, 179);
+                    color: white;
+                    border: 2px solid rgb(121, 82, 179);
+                  "
+                >
+                  Login First
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4 mb-3">
+            <div class="card" data-key="15">
+              <img
+                src="./Sports_Club_Home_files/football.jpg"
+                class="card-img-top"
+                alt="Event Image"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Senior Soccer Spectacle</h5>
+                <p class="card-text">Football for senior sports enthusiasts.</p>
+                <ul class="list-unstyled">
+                  <li>
+                    <i class="fas fa-map-marker-alt"></i> Location: Yangon
+                  </li>
+                  <li><i class="fas fa-calendar-alt"></i> Date: 2025-06-25</li>
+                  <li><i class="fas fa-clock"></i> Time: 16:30:00</li>
+                  <li><i class="fas fa-users"></i> Age Group: 35-60</li>
+                  <li><i class="fas fa-futbol"></i> Sport Type: Football</li>
+                  <li><i class="fas fa-phone-alt"></i> Contact: 09780220438</li>
+                </ul>
+                <a
+                  href="http://localhost:3000/views/login.php"
+                  class="btn eventregisterBtn"
+                  style="
+                    background-color: rgb(121, 82, 179);
+                    color: white;
+                    border: 2px solid rgb(121, 82, 179);
+                  "
+                >
+                  Login First
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="bg-light py-5">
+      <div class="container">
+        <h2 class="text-center mb-4">About Us</h2>
+        <p class="text-center">
+          We are a passionate community dedicated to promoting sports and
+          healthy living. Join us in making every event memorable!
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5">
+      <div class="container">
+        <h2 class="text-center mb-4">Contact Us</h2>
+        <form>
+          <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              placeholder="Your Name"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              placeholder="Your Email"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Message</label>
+            <textarea
+              class="form-control"
+              id="message"
+              rows="3"
+              placeholder="Your Message"
+            ></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+      <p>© 2024 Sports Club. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="./Sports_Club_Home_files/bootstrap.bundle.min.js.download"></script>
+
+    <br />
+    <b>Warning</b>: Undefined array key "userID" in
+    <b>D:\###MyLerning\Sport_clubApp\index.php</b> on line <b>243</b><br />
+    <br />
+    <b>Warning</b>: Undefined array key "role" in
+    <b>D:\###MyLerning\Sport_clubApp\index.php</b> on line <b>244</b><br />
+    <script>
+      console.log();
+      $(document).ready(function () {
+        let userLoggedIn = false;
+        $.ajax({
+          url: "./API/readEventAPI.php",
+          method: "POST",
+        })
+          .done(function (data) {
+            try {
+              const allevents = JSON.parse(data); // Parse the event data
+              let eventCard = "";
+
+              $.each(allevents, function (key, value) {
+                let actionButton = userLoggedIn
+                  ? `<button class='btn eventregisterBtn' 
+                                style='background-color: rgb(121, 82, 179); 
+                                       color: white; 
+                                       border: 2px solid rgb(121, 82, 179);'>
+                            Register
+                        </button>`
+                  : `<a href="./views/login.php" class='btn eventregisterBtn' 
+                                style='background-color: rgb(121, 82, 179); 
+                                       color: white; 
+                                       border: 2px solid rgb(121, 82, 179);'>
+                            Login First
+                        </a>`;
+
+                eventCard += `
+                        <div class='col-12 col-sm-6 col-md-4 mb-3'>
+                            <div class='card' data-key="${value.eventID}">
+                                <img src='${value.photo}' class='card-img-top' alt='Event Image'>
+                                <div class='card-body'>
+                                    <h5 class='card-title'>${value.eventName}</h5>
+                                    <p class='card-text'>${value.description}</p>
+                                    <ul class='list-unstyled'>
+                                        <li><i class='fas fa-map-marker-alt'></i> Location: ${value.location}</li>
+                                        <li><i class='fas fa-calendar-alt'></i> Date: ${value.date}</li>
+                                        <li><i class='fas fa-clock'></i> Time: ${value.time}</li>
+                                        <li><i class='fas fa-users'></i> Age Group: ${value.age}</li>
+                                        <li><i class='fas fa-futbol'></i> Sport Type: ${value.sport}</li>
+                                        <li><i class='fas fa-phone-alt'></i> Contact: ${value.contactinfo}</li>
+                                    </ul>
+                                    ${actionButton}
+                                </div>
+                            </div>
+                        </div>`;
+              });
+
+              // Append to the container
+              $("#devents").html(eventCard);
+            } catch (error) {
+              console.error("Error parsing event data: ", error);
+              $("#result").html("Unable to load events.");
+            }
+          })
+          .fail(function (jqXHR, textStatus, errorThrown) {
+            console.error("AJAX error: ", textStatus, errorThrown);
+            $("#result").html("Failed to fetch events.");
+          });
+
+        // Use event delegation for dynamically added elements
+        $(document).on("click", ".eventregisterBtn", function () {
+          let card = $(this).closest(".card");
+          let eventID = card.data("key"); // Access data-key
+
+          $.post(
+            "registerEventApi.php",
+            {
+              eventID: eventID,
+            },
+            function (data) {
+              let status = data.trim();
+              if (status === "success") {
+                alert("Register Successfully...");
+                window.location.assign("index.php");
+              } else {
+                $("#result").html("Cannot register.");
+              }
+            }
+          ).fail(function () {
+            $("#result").html("Error while registering for the event.");
+          });
+        });
+
+        $("#filterBtn").on("click", function () {
+          var date = $("#dateInput").val();
+          var sport = $("#sportDropdown").val();
+          var location = $("#locationDropdown").val();
+          var ageGroup = $("#agegroupDropdown").val();
+
+          // Prepare data object for AJAX
+          let requestData = {};
+
+          if (date && date !== "") {
+            requestData.date = date;
+          }
+          if (sport && sport !== "sport") {
+            requestData.sport = sport;
+          }
+          if (location && location !== "location") {
+            requestData.location = location;
+          }
+          if (ageGroup && ageGroup !== "age") {
+            requestData.ageGroup = ageGroup;
+          }
+          console.log(requestData);
+          // Perform AJAX call
+          $.ajax({
+            url: "fetch_events.php",
+            type: "POST",
+            data: requestData,
+            success: function (data) {
+              try {
+                const allevents = JSON.parse(data); // Parse JSON response
+                $("#devents").empty(); // Clear existing events
+                let eventCard = "";
+
+                if (allevents.length === 0) {
+                  eventCard =
+                    "<p class='text-center'>No events found for the selected filters.</p>";
+                } else {
+                  $.each(allevents, function (key, value) {
+                    let actionButton = userLoggedIn
+                      ? `<button class='btn eventregisterBtn' 
+                                style='background-color: rgb(121, 82, 179); 
+                                       color: white; 
+                                       border: 2px solid rgb(121, 82, 179);'>
+                            Register
+                        </button>`
+                      : `<a href="./views/login.php" class='btn eventregisterBtn' 
+                                style='background-color: rgb(121, 82, 179); 
+                                       color: white; 
+                                       border: 2px solid rgb(121, 82, 179);'>
+                            Login First
+                        </a>`;
+                    eventCard += `
+                        <div class='col-12 col-sm-6 col-md-4 mb-3'>
+                            <div class='card' data-key="${value.eventID}">
+                                <img src='${value.photo}' class='card-img-top' alt='Event Image'>
+                                <div class='card-body'>
+                                    <h5 class='card-title'>${value.eventName}</h5>
+                                    <p class='card-text'>${value.description}</p>
+                                    <ul class='list-unstyled'>
+                                        <li><i class='fas fa-map-marker-alt'></i> Location: ${value.location}</li>
+                                        <li><i class='fas fa-calendar-alt'></i> Date: ${value.date}</li>
+                                        <li><i class='fas fa-clock'></i> Time: ${value.time}</li>
+                                        <li><i class='fas fa-users'></i> Age Group: ${value.age}</li>
+                                        <li><i class='fas fa-futbol'></i> Sport Type: ${value.sport}</li>
+                                        <li><i class='fas fa-phone-alt'></i> Contact: ${value.contactinfo}</li>
+                                    </ul>
+                                    ${actionButton}
+                                </div>
+                            </div>
+                        </div>`;
+                  });
+                }
+                $("#devents").append(eventCard); // Append events to the container
+              } catch (error) {
+                console.error("Invalid JSON response:", error);
+              }
+            },
+            error: function (xhr, status, error) {
+              console.error("AJAX request failed:", status, error);
+            },
+          });
+        });
+
+        // Clear button click event
+        $("#clearBtn").on("click", function () {
+          $("#dateInput").val("");
+          $("#sportDropdown").val("Select Sport Type");
+          $("#locationDropdown").val("Select Location");
+          $("#agegroupDropdown").val("Select Age");
+          $("#devents").html("");
+
+          $.ajax({
+            url: "readEventAPI.php",
+            method: "POST",
+          }).done(function (data) {
+            var allevents = JSON.parse(data);
+            var eventCard = "";
+            $.each(allevents, function (key, value) {
+              eventCard += "<div class='col-sm-4 mb-3'>";
+              eventCard += "<div class='card' key='" + value.idevent + "' >";
+              eventCard +=
+                "<img src='" + value.photo + "' class='card-img-top'>";
+              eventCard += "<div class='card-body'>";
+              eventCard +=
+                "<h5 class='card-title'>" + value.eventName + "</h5>";
+              eventCard += "<p class='card-text'>" + value.description + "</p>";
+              eventCard += "<ul class = 'list-unstyled' >";
+              eventCard +=
+                "<li><i class = 'fas fa-map-marker-alt'></i> Location:" +
+                value.location +
+                "</li>";
+              eventCard +=
+                "<li><i class = 'fas fa-calendar-alt'> </i> Date:" +
+                value.date +
+                "</li >";
+              eventCard +=
+                "<li> <i class = 'fas fa-clock'> </i> Time:" +
+                value.time +
+                "</li >";
+              eventCard +=
+                "<li> <i class = 'fas fa-users'> </i> Age Group:" +
+                value.age +
+                "</li >";
+              eventCard +=
+                "<li> <i class = 'fas fa-futbol'> </i> Sport Type:" +
+                value.sport +
+                "</li >";
+              eventCard +=
+                "<li> <i class = 'fas fa-phone-alt'> </i> Contact" +
+                value.contactinfo +
+                "</li >";
+              eventCard +=
+                "</ul><button class='btn' style='background-color: rgb(121, 82, 179); color: white; border: 2px solid rgb(121, 82, 179);' id='event_register'>Register</button>";
+              eventCard += "</div></div></div>";
+            });
+            $("#devents").append(eventCard);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
