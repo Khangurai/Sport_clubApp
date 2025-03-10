@@ -236,25 +236,6 @@ $userLoggedIn = isset($_SESSION['userLogin']) && $_SESSION['userLogin'];
         <p>&copy; 2024 Sports Club. All Rights Reserved.</p>
     </footer>
 
-    <!-- Content Section -->
-    <!-- <div class="container" style="margin-top: 80px; min-height: calc(100vh - 120px);">
-        <h1>Welcome to the Fixed-Top Navbar Example</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae nisl ut lorem convallis fermentum. Proin hendrerit orci ut metus gravida, non dignissim enim fermentum. Curabitur sodales libero sed consequat aliquet.</p>
-        <p>Scroll down to see how the navbar remains fixed at the top of the page.</p>
-    </div> -->
-
-    <!-- Footer Section -->
-    <!-- <footer class="bg-dark text-white text-center py-3">
-        <div class="container">
-            <p class="mb-0">© 2024 Brand Name. All rights reserved.</p>
-            <small>Follow us on 
-                <a href="#" class="text-white">Facebook</a>, 
-                <a href="#" class="text-white">Twitter</a>, and 
-                <a href="#" class="text-white">Instagram</a>.
-            </small>
-        </div>
-    </footer> -->
-
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
@@ -347,7 +328,7 @@ $dBRole = $_SESSION['role'];
                 });
         });
 
-        
+
 
         $('#filterBtn').on('click', function() {
             var date = $('#dateInput').val();
